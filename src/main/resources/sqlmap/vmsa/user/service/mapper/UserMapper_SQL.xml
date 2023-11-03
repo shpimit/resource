@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="vmsa.resource.service.mapper.UserMapper">
+    <select id="selectList" resultType="vmsa.resource.service.impl.UserDetailsImpl">
+        SELECT
+            *
+        FROM USER
+    </select>
+
+    <select id="findByUsername" parameterType="String" resultType="vmsa.resource.service.impl.UserDetailsImpl">
+        SELECT
+        *
+        FROM USER
+        WHERE
+        <if test="username != null">"USERNAME" = #{username}</if>
+    </select>
+
+</mapper>

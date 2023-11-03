@@ -1,0 +1,47 @@
+# springboot
+server:
+  port: 8081
+
+# SPRING 설정
+spring:
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+  datasource:
+    #    url: jdbc:h2:tcp://localhost/~/test
+    #    driver-class-name: org.h2.Driver
+    url: jdbc:log4jdbc:h2:tcp://localhost/~/test
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    username: sa
+  security:
+    oauth2:
+      jwt:
+        signkey: vmsa@#$
+
+security:
+  oauth2:
+    client:
+      client-id: gvpro
+      client-secret: gcat
+    resource:
+      token-info-uri: http://localhost:8080/oauth/check_token
+
+mybatis:
+  type-aliases-package: vmsa
+  config-location: classpath:sql-mapper-config.xml
+  mapper-locations: classpath:/sqlmap/**/*Mapper_SQL.xml
+
+logging:
+  level:
+    root: INFO
+    jdbc: OFF
+    jdbc.connection: OFF
+    jdbc.sqlonly: DEBUG
+    jdbc.sqltiming: DEBUG
+    jdbc.audit : OFF
+    jdbc.resultset : OFF
+    jdbc.resultsettable: DEBUG
+    org.springframework.web: DEBUG
+    com.zaxxer.hikari.HikariDataSource: ERROR
